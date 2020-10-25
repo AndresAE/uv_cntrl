@@ -28,9 +28,19 @@ Filters::Filters(int givenValue)
 void Filters::high_pass(void)
 {
 	// eventhough this function is public, it can access
+	alpha = (1 / hp_frequency) / ((1 / hp_frequency) + dt);
+	y[n] = alpha * (y[n - 1] + x[n] - x[n - 1]);
+	x[n - 1] = x[n];
+	y[n - 1] = y[n];
+
+}
+
+void Filters::limit(void)
+{
+	// eventhough this function is public, it can access
 	// and modify this library's private variables
-	Serial.print("value is ");
-	Serial.println(value);
+	if (y[n] < limits[0]) { y[n] = limits[0]; }
+	if (y[n] > limits[1]) { y[n] = limits[1]; }
 
 }
 
@@ -38,8 +48,9 @@ void Filters::low_pass(void)
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables
-	Serial.print("value is ");
-	Serial.println(value);
+	alpha = dt / ((1 / lp_frequency) + dt);
+	y[n] = alpha * x + (1 - alpha) * y[n - 1];
+	y[n - 1] = y[n];
 
 }
 
