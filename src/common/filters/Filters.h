@@ -16,9 +16,11 @@ class Filters
     // user-accessible "public" interface
 public:
     Filters(int);
-    void high_pass(void);
-    void high_pass(void);
     void complementary(void);
+    void derivative(void);
+    void integral(void);
+    void high_pass(void);
+    void high_pass(void);
 
     // library-accessible "private" interface
 private:
