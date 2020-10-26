@@ -25,30 +25,29 @@ Rotations::Rotations(int givenValue)
 // Public Methods //////////////////////////////////////////////////////////////
 // Functions available in Wiring sketches, this library, and other libraries
 
-void Rotations::high_pass(void)
+void Rotations::b2w(void)
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables
-	Serial.print("value is ");
-	Serial.println(value);
+	float s[3][3] = {{cos(a)*cos(b),sin(b),s(a)*cos(b)}, {-c(a)*s(b),c(b),-s(a)*s(b)}, {-sin(a),0,cos(a)}};
 
 }
 
-void Rotations::low_pass(void)
+void Rotations::eci2ned(void)
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables
-	Serial.print("value is ");
-	Serial.println(value);
+	float b[3][3] = {{cos(mu),-sin(mu)*sin(l),sin(mu)*cos(l)}, {0,cos(l),sin(l)}, {-sin(mu),-cos(mu)*sin(l),cos(mu)*cos(l)}};
 
 }
 
-void Rotations::complementary(void)
+void Rotations::ned2abc(void)
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables
-	Serial.print("value is ");
-	Serial.println(value);
+	float b[3][3] = {{cos(the)*cos(psi),cos(the)*sin(psi),-sin(the)}, 
+			 {-cos(phi)*sin(psi)+sin(phi)*sin(the)*cos(psi),cos(phi)*cos(psi)+sin(phi)*sin(the)*sin(psi),sin(phi)*cos(the)}, 
+			 {sin(phi)*sin(psi)+cos(phi)*sin(the)*cos(phi),-sin(phi)*cos(psi)+cos(phi)*sin(the)*sin(psi),cos(phi)*cos(the)}};
 
 }
 
