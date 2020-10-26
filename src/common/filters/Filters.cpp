@@ -25,6 +25,31 @@ Filters::Filters(int givenValue)
 // Public Methods //////////////////////////////////////////////////////////////
 // Functions available in Wiring sketches, this library, and other libraries
 
+void Filters::complementary(void)
+{
+	// eventhough this function is public, it can access
+	// and modify this library's private variables
+	Serial.print("value is ");
+	Serial.println(value);
+
+}
+
+void Filters::derivative(void)
+{
+	// eventhough this function is public, it can access
+	// and modify this library's private variables
+	dydt = (y[n] - y[n-1]) / dt
+
+}
+
+void Filters::integral(void)
+{
+	// eventhough this function is public, it can access
+	// and modify this library's private variables
+	dydt = (y[n] - y[n-1]) * dt / 2 + c
+
+}
+
 void Filters::high_pass(void)
 {
 	// eventhough this function is public, it can access
@@ -51,15 +76,6 @@ void Filters::low_pass(void)
 	alpha = dt / ((1 / lp_frequency) + dt);
 	y[n] = alpha * x + (1 - alpha) * y[n - 1];
 	y[n - 1] = y[n];
-
-}
-
-void Filters::complementary(void)
-{
-	// eventhough this function is public, it can access
-	// and modify this library's private variables
-	Serial.print("value is ");
-	Serial.println(value);
 
 }
 
