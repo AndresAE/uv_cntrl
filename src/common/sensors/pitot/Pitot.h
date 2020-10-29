@@ -1,6 +1,6 @@
 /*
   Pitot.h - Pitot Library - description
-  Copyright (c) 2020 Andres Sandoval.  All right reserved.
+  Copyright (c) 2020 Andres Sandoval.  All rights reserved.
 */
 
 // ensure this library description is only included once
@@ -20,12 +20,14 @@ class Pitot
     // user-accessible "public" interface
 public:
     // constructor
-    Pitot();
+    Pitot( int pin);
 
     // methods
-    float indicated_airspeed();
+    float indicated_airspeed( int offset );
+    float offset( void );
     
 private:
+    int _pin;
 };
 
 #endif
