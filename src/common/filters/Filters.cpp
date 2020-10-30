@@ -18,7 +18,7 @@ Filters::Filters()
 // Public Methods //////////////////////////////////////////////////////////////
 // Functions available in Wiring sketches, this library, and other libraries
 
-float Filters::derivative(double y, float dt)
+float Filters::derivative(float y [], float dt)
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables
@@ -27,7 +27,7 @@ float Filters::derivative(double y, float dt)
 
 }
 
-float Filters::high_pass(double x, double y, float hp_frequency, float dt)
+float Filters::high_pass(float x [], float y [], float hp_frequency, float dt)
 {
 	// eventhough this function is public, it can access
 	float alpha = (1 / hp_frequency) / ((1 / hp_frequency) + dt);
@@ -36,7 +36,7 @@ float Filters::high_pass(double x, double y, float hp_frequency, float dt)
 
 }
 
-float Filters::integral(double y, float dt, float c)
+float Filters::integral(float y [], float dt, float c)
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables
@@ -45,7 +45,7 @@ float Filters::integral(double y, float dt, float c)
 
 }
 
-float Filters::limit(float y, float limits)
+float Filters::limit(float y, float limits [])
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables
@@ -55,7 +55,7 @@ float Filters::limit(float y, float limits)
 
 }
 
-float Filters::low_pass(float x, double y, float hp_frequency, float dt)
+float Filters::low_pass(float x, float y [], float lp_frequency, float dt)
 {
 	// eventhough this function is public, it can access
 	// and modify this library's private variables

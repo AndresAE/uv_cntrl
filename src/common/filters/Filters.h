@@ -23,11 +23,11 @@ public:
     Filters();
 
     // methods
-    float derivative(double y, float dt);
-    float high_pass(double x, double y, float hp_frequency, float dt);
-    float integral(double y, float dt, float c = 0);
-    float limit(float y, float limits);
-    float low_pass(double x, double y, float hp_frequency, float dt);
+    float derivative(float y [], float dt);
+    float high_pass(float x [], float y [], float hp_frequency, float dt);
+    float integral(float y [], float dt, float c = 0);
+    float limit(float y, float limits []);
+    float low_pass(float x, float y [], float lp_frequency, float dt);
 
 private:
 };
