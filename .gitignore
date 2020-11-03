@@ -6,3 +6,9 @@
 /.vs/ProjectSettings.json
 /.vs/slnx.sqlite
 /.vs
+*.aux
+*.lof
+*.log
+*.out
+*.gz
+*.toc
