@@ -25,6 +25,7 @@ public:
     // methods
     float indicated_airspeed( int offset );
     float offset( void );
+    float true_airspeed( float veloc_e, float rho_0 );
     
 private:
     int _pin;

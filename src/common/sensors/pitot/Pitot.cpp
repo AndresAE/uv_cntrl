@@ -17,7 +17,7 @@ float Pitot::indicated_airspeed( int offset )
 {
   float adc_avg = 0; float veloc = 0.0;
   float V_0 = 5.0; // supply voltage to the pressure sensor
-  float rho = 1.204; // density of air 
+  float rho = 1.204; // sea level density of air 
 
   // parameters for averaging and offset
   int veloc_mean_size = 20;
@@ -36,9 +36,10 @@ float Pitot::indicated_airspeed( int offset )
       veloc = sqrt((10000.0*((adc_avg/1023.0)-0.5))/rho);
     }
   }
-  return veloc;
+  return veloc * 3.28084;  // [ft/s]
 
 }
+
 float Pitot::offset( void )
 {
   int offset = 0;
@@ -48,4 +49,11 @@ float Pitot::offset( void )
   }
   offset /= offset_size;
   return offset;
+}
+
+float Pitot::true_airspeed( float veloc_e, float rho_0 )
+{
+  float rho_sl = 0.00238; // [slug/ft3]
+  float veloc = veloc_e * sqrt( rho_0 / rho_sl );
+  return veloc;
 }
