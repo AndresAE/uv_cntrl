@@ -14,21 +14,27 @@
   #include "WProgram.h"
 #endif
 
+#include <math.h>
+
 // library interface description
 class Pitot
 {
     // user-accessible "public" interface
 public:
     // constructor
-    Pitot( int pin);
+    Pitot( int pin, float rho_sl, float p_sl, float a_sl);
 
     // methods
+    float equivalent_airspeed(float veloc, float p);
     float indicated_airspeed( int offset );
     float offset( void );
-    float true_airspeed( float veloc_e, float rho_0 );
+    float true_airspeed( float veloc_e, float rho );
     
 private:
     int _pin;
+    int _rho_sl;
+    int _p_sl;
+    int _a_sl;
 };
 
 #endif
