@@ -8,23 +8,25 @@
 #define Rotations_h
 
 // include types & constants of Wiring core API
-#include "WConstants.h"
+#if (ARDUINO >=100)
+#include "Arduino.h"
+#else
+#include "WProgram.h"
+#endif
+#include <math.h>
 
 // library interface description
 class Rotations
 {
     // user-accessible "public" interface
 public:
-    Rotations(int);
-    void high_pass(void);
-    void high_pass(void);
-    void complementary(void);
+    Rotations();
+    float b2w(float a, float b);
+    float eci2ned(float mu, float l);
+    float ned2abc(float phi, float the, float psi);
 
     // library-accessible "private" interface
 private:
-    int value;
-    void doSomethingSecret(void);
 };
 
 #endif
-
